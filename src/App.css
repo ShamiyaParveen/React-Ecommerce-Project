@@ -1,38 +1,213 @@
-.App {
-  text-align: center;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+.App{
+  text-align:center;
+}
+.container{
+  max-width: 90%;
+  margin:auto;
+  padding: 0px 15px;
+}
+.top-head-background{
+  background-color: rgb(226, 43, 128);
+}
+.second-header-menu1 li{
+  font-size: 12px ;
+  list-style-type: none;
+  padding: 4px 8px;
+}
+.second-header-menu{
+  font-size: 12px ;
+  padding: 4px 8px
+}
+.logowrapper{
+  width:100%;
+  height:auto;
+  padding: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.part2 .countryDrop{
+  width:150px;
+  height:50px;
+  min-width: 150px;
+  border-radius: 4px;
+  border: 1px solid #dedede;
+  padding: 8px 10px;
+}
+.countryDrop:hover{
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background-color: #f9f9f9;
+  border: 1px solid #dedede;
+}
+button:focus{
+  outline:none;
+}
+.countryDrop span{
+  text-transform: capitalize;
+}
+.location{
+  font-size: 10px;
+  color: gray;
+}
+.location-selector{
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #e22b80;
+}
+.FaAngleDown{
+  color: gray;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerSearch {
+  height: 50px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #c7e6f278;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 500px;
+}
+
+.headerSearch input {
+  background: #c7e6f200;
+  border: none;
+  flex: 1;
+  outline: none;
+  font-size: 14px;
+}
+
+.headerSearch Button {
+   min-width: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 22px;
+  color: #e22b80;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s ease-in-out;
+}
+.headerSearch Button:hover{
+  background-color: #e22b801a;
+  transition: 0.2s all ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+.part3 .user-icon {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #828282 !important;
+  font-size: 22px;
+  color: #2a2a2a;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s ease-in-out;
+}
+.part3 .cart-icon {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e22b80 !important;
+  font-size: 22px;
+  color: #e22b80;
+  background-color: #e22b801a;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s ease-in-out;
+}
+.price{
+  font-size: 16px;
+  font-weight: 500;
+  color: #2a2a2a;
+}
+.count{
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  background-color: #e22b80;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+}
+.allcategorybtn{
+  background-color: #4EB7DC !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  padding: 10px 15px !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  text-transform: none !important;
+  border: 1px solid #ddd !important;
+  transition: 0.2s all ease-in-out;
+}
+/* Main nav container */
+.navpart2 ul {
+    gap: 4px;                 /* Space between menu items */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* List items */
+.navpart2 ul li {
+    list-style: none;
+    text-transform: uppercase;
+}
+
+/* Link styling */
+.navpart2 ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4EB7DC;
+    transition: 0.3s ease;
+    padding: 6px 0px;
+    border-radius: 4px;
+}
+
+/* Hover effect */
+.navpart2 ul li a:hover {
+    color: #E22B80;   /* Pink theme shade */
+}
+
+/* Active link */
+.navpart2 ul li a.active {
+    color: #E22B80;
+    font-weight: 600;
+}
+
+/* Responsive: On smaller screens, center align */
+@media (max-width: 768px) {
+    .navpart2 ul {
+        justify-content: center !important;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .navpart2 ul li a {
+        font-size: 14px;
+    }
 }
