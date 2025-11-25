@@ -56,7 +56,7 @@ ecommerce-react-app/
 ## 🛠 Installation & Setup
 
 ### 1. Clone the repository
-git clone (https://github.com/ShamiyaParveen/React-Ecommerce-Project)
+git clone https://github.com/itsankityadav/ecommerce-react-app.git
 cd ecommerce-react-app
 
 ### 2. Install dependencies
