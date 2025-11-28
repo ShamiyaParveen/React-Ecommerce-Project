@@ -211,3 +211,62 @@ button:focus{
         font-size: 14px;
     }
 }
+.css-10d30g3-MuiPaper-root-MuiDialog-paper{
+  padding:20px;
+}
+.countryList {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 12px;
+}
+.countryItem{
+  width: 100%;
+  align-items: start !important;
+}
+.countryItem Button {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #f5f5f5;
+  color: #333;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.countryItem Button:hover {
+  background-color: #e22b80;   /* your theme color if needed */
+  color: #fff;
+  border-color: #e22b80;
+  transform: translateY(-2px);
+}
+
+.close_{
+  position: absolute;
+  top: -77px;
+  right: -435px;
+   min-width: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: transparent !important;
+  border: none;
+  font-size: 20px !important;
+  cursor: pointer;
+  color: #000 !important;
+}
+.close_:hover{
+  color: black;
+}
