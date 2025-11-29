@@ -167,8 +167,19 @@ button:focus{
   transition: 0.2s all ease-in-out;
 }
 /* Main nav container */
+nav{
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dedede;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
 .navpart2 ul {
     gap: 4px;                 /* Space between menu items */
+}
+.navpart2{
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
 /* List items */
@@ -234,13 +245,12 @@ button:focus{
   justify-content: start;
   width: 100%;
   padding: 8px 12px;
-  background-color: #f5f5f5;
   color: #333;
   border-radius: 6px;
-  border: 1px solid #ddd;
   font-size: 14px;
   text-align: left;
   transition: all 0.3s ease;
+  text-transform: capitalize;
 }
 
 .countryItem Button:hover {
@@ -248,6 +258,11 @@ button:focus{
   color: #fff;
   border-color: #e22b80;
   transform: translateY(-2px);
+}
+.countryItem Button.active {
+  background-color: #e22b80;   /* your theme color if needed */
+  color: #fff;
+  border-color: #e22b80;
 }
 
 .close_{

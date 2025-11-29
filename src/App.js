@@ -10,37 +10,29 @@ const MyContext = createContext();
 
 function App() {
   const [countryList, setCountryList] = useState([]);
-  const [loadingCountries, setLoadingCountries] = useState(true);
-  const [countryError, setCountryError] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState('');
+ 
 
   useEffect(() => {
-    getCountry();
+    getCountry("https://countriesnow.space/api/v0.1/countries");
   }, []);
 
-   const getCountry = async () => {
-      try {
-        setLoadingCountries(true);
-        setCountryError(null);
+  const getCountry = async (url) => {
+    const responsive = await axios.get(url).then((res)=>{
+      setCountryList(res.data.data);
+      console.log(res.data.data);
+      
+    })
 
-        const res = await axios.get(
-          "https://restcountries.com/v3.1/all?fields=name,cca2"
-        );
+  }
 
-        console.log("Countries API response:", res.data);
-        setCountryList(res.data || []);
-      } catch (error) {
-        console.error("Error fetching countries:", error);
-        setCountryError(error);
-      } finally {
-        setLoadingCountries(false);
-      }
-    };
+  
 
 
   const value = {
     countryList,
-    loadingCountries,
-    countryError,
+   selectedCountry,
+    setSelectedCountry
   };
 
   return (
