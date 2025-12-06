@@ -655,3 +655,142 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
     display: none;
   }
 }
+
+.footer-section {
+  background-color: #000000; /* Pure Black */
+  color: #b0b0b0;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Logo Styling --- */
+.footer-logo-img{
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+/* --- Headings --- */
+.footer-widget-heading h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* decorative underline */
+.footer-widget-heading h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 2px;
+  width: 50px;
+  background: #ec3875; /* Pink */
+}
+
+/* --- Links List --- */
+.footer-links ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 15px;
+  display: block;
+}
+
+.footer-links li a {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #ec3875; /* Pink */
+  padding-left: 5px;
+}
+
+/* --- Subscribe Form --- */
+.subscribe-form {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.subscribe-form input {
+  width: 100%;
+  padding: 14px 28px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.subscribe-form input:focus {
+  outline: none;
+  border-color: #2bbef9; /* Blue */
+}
+
+.subscribe-form button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: #ec3875; /* Pink */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #d0265d; /* Darker Pink */
+}
+
+/* --- Social Icons --- */
+.footer-social-icon a {
+  color: #fff;
+  font-size: 18px;
+  margin-right: 15px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #1e1e1e;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-social-icon a:hover {
+  background: #2bbef9; /* Blue */
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* --- Copyright --- */
+.copyright-area {
+  background: #0a0a0a;
+  padding: 25px 0;
+  margin-top: 50px;
+  border-top: 1px solid #222;
+}
+
+.copyright-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #878787;
+}
+
+.copyright-text p a {
+  color: #ec3875; /* Pink */
+  text-decoration: none;
+}
