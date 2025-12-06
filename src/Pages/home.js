@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
+import HomeBanner from "../Component/HomeBanner/HomeBanner";
+import Products from "../Component/ProductItem/Products";
+import Categories from "../Component/CategoryItems/Categories";
+import BestSeller from "../Component/BestSeller/BestSeller";
+import About from "../Component/About/About";
 
-const home = () => {
+const Home = () => {
   return (
-    <div>
+    <>
+      <HomeBanner />
 
-    </div>
-  )
-}
+   
+    </>
+  );
+};
 
-export default home
-
-
-//8 min of 7 video
+export default Home;

@@ -20,7 +20,7 @@ const Header = () => {
     <>
      <header className="header"> 
     <div className="container-fluid p-0">
-         <p className=" top-head-background text-white p-2 text-center mb-0 fw-400" style={{fontSize:'12px'}}>Due to the COVID 19 epidemic, orders may be processed with a slight delay
+         <p className=" top-head-background text-white p-2 text-center mb-0 fw-400" style={{fontSize:'12px'}}>Limited Time Offer: Flat 10% OFF on your first purchase! Use code: WELCOME10
         </p>
         </div>
         <div className="container">
