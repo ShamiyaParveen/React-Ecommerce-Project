@@ -42,8 +42,8 @@ const Products = () => {
     
   <div className="row mb-4">
             <div className="col-lg-7">
-              <p className="text-left sub-heading1">Our Shop</p>
-              <h2 className="section-title1 text-left">Latest <span className="gradient-text-dark">Products</span></h2>
+              <p className="text-left sub-heading">Our Shop</p>
+              <h2 className="section-title text-left">Latest <span className="gradient-text">Products</span></h2>
               </div>
                <div className="col-lg-5 align-self-center">
               <Link to='/' className="see-all-link float-right"><Button>View all</Button></Link>

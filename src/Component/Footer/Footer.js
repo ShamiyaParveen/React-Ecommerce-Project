@@ -1,9 +1,63 @@
 import React from 'react';
 import img_logo from '../../assets/images/logo.png';
 import { Link } from "react-router-dom";
+import { FaInstagram } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaCcVisa } from "react-icons/fa";
+import { FaCcMastercard } from "react-icons/fa6";
+import { FaCcAmazonPay } from "react-icons/fa";
+import { GiClothes } from "react-icons/gi";
+import { TbTruckDelivery } from "react-icons/tb";
+import { RiDiscountPercentLine } from "react-icons/ri";
+import { IoPricetagsSharp } from "react-icons/io5";
+
 
 const Footer = () => {
   return (
+
+
+<>
+   
+    <section class="feature-bar">
+        <div class="container">
+            <div class="row g-4"> 
+                
+                <div class="col-12 col-md-6 col-lg-3 feature-col">
+                    <div class="feature-item">
+                        <GiClothes class="feature-icon" />
+                        <span class="feature-text">Latest trend products</span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 feature-col">
+                    <div class="feature-item">
+                       <TbTruckDelivery class="feature-icon" />
+                        <span class="feature-text">Free delivery for order </span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 feature-col">
+                    <div class="feature-item">
+                        <RiDiscountPercentLine class="feature-icon" />
+                        <span class="feature-text">Daily Mega Discounts</span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 feature-col">
+                    <div class="feature-item">
+                        <IoPricetagsSharp class="feature-icon" />
+                        <span class="feature-text">Best price on the market</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
     <footer className="footer-section">
       <div className="container">
         
@@ -23,10 +77,18 @@ const Footer = () => {
             </p>
             {/* Social Icons */}
             <div className="footer-social-icon">
-              <a href="#"><i className="fab fa-facebook-f"></i></a>
-              <a href="#"><i className="fab fa-twitter"></i></a>
-              <a href="#"><i className="fab fa-instagram"></i></a>
-              <a href="#"><i className="fab fa-linkedin-in"></i></a>
+              <a href="#">
+                <FaInstagram />
+              </a>
+              <a href="#">
+                <FaFacebook />
+              </a>
+              <a href="#">
+                <IoLogoYoutube />
+              </a>
+              <a href="#">
+                <FaXTwitter />
+              </a>
             </div>
           </div>
 
@@ -87,25 +149,32 @@ const Footer = () => {
       {/* --- Bottom Copyright Section --- */}
       <div className="copyright-area">
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-xl-6 col-lg-6 text-center text-lg-start">
+          <div className="row justify-content-between align-items-center">
+            <div className="col-xl-6 col-lg-6 text-lg-start ">
               <div className="copyright-text">
                 <p>Copyright &copy; 2024 <a href="/">Zoobiya</a>. All Rights Reserved.</p>
               </div>
             </div>
             <div className="col-xl-6 col-lg-6 d-none d-lg-block text-end">
-              <div className="footer-menu">
+              <div className="footer-menu text-right ">
                 {/* Placeholders for Payment Methods */}
                 <span style={{color:'#fff', fontSize:'12px', marginRight:'10px'}}>We accept:</span>
-                <i className="fab fa-cc-visa fa-2x" style={{color:'#fff', margin:'0 5px'}}></i>
-                <i className="fab fa-cc-mastercard fa-2x" style={{color:'#fff', margin:'0 5px'}}></i>
-                <i className="fab fa-cc-paypal fa-2x" style={{color:'#fff', margin:'0 5px'}}></i>
+                <a style={{color:'#fff', margin:'0 5px'}}>
+                    <FaCcVisa size={32} />
+                </a>
+                <a style={{color:'#fff', margin:'0 5px'}}>
+                    <FaCcMastercard size={32} />
+                </a>
+                <a style={{color:'#fff', margin:'0 5px'}}>
+                    <FaCcAmazonPay size={32} />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </footer>
+    </>
   );
 };
 

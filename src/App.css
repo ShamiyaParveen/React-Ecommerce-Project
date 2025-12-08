@@ -111,7 +111,7 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
 
 
 
-.homeproduct { padding: 80px 0; background-color: #2a2a2a; }
+.homeproduct { padding: 80px 0; background-color: #ecebeb; }
 .card-focus {
   width: 100%;
   background: #fff;
@@ -471,6 +471,31 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
   font-size: 0.9rem;
 }
 
+
+/* Desktop: make left column sticky */
+@media (min-width: 992px) {
+  .sticky-section {
+    position: sticky;
+    top: 90px;             /* adjust as per your header height */
+    align-self: flex-start;
+    z-index: 2;
+  }
+
+  /* Make sure both columns start from top, not vertically centered */
+  .sticky-section,
+  .scroll-section {
+    align-self: flex-start;
+  }
+}
+
+/* Right side scroll area tweaks (optional) */
+.scroll-section {
+  padding-bottom: 40px;    /* little breathing room at bottom */
+}
+
+
+
+
 /* Product Image Area */
 .product-image-wrapper {
   background-color: #f4f4f4;
@@ -659,7 +684,7 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
 .footer-section {
   background-color: #000000; /* Pure Black */
   color: #b0b0b0;
-  font-family: 'Poppins', sans-serif;
+  border-top: 1px solid #333;
   padding-top: 70px;
   position: relative;
   overflow: hidden;
@@ -794,3 +819,48 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
   color: #ec3875; /* Pink */
   text-decoration: none;
 }
+.rounded-imgages{
+  max-width: 250px;
+}
+     .feature-bar {
+            background-color: #000000; /* Black Background as requested */
+            color: #ffffff;
+            padding: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers content within the grid column */
+            padding: 10px;
+        }
+
+        .feature-icon {
+            font-size: 2rem; /* Icon size */
+            margin-right: 15px;
+            color: #fff;
+        }
+
+        .feature-text {
+            font-weight: 500;
+            font-size: 0.95rem;
+            line-height: 1.2;
+        }
+
+        /* RESPONSIVE BORDERS: 
+           Only show right-border on Large screens (lg) and up.
+           We use a subtle gray for the border so it looks good on black.
+        */
+        @media (min-width: 992px) {
+            .feature-col:not(:last-child) {
+                border-right: 1px solid #333333;
+            }
+        }
+        
+        /* On tablet (md), add border to every second item */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .feature-col:nth-child(odd) {
+                border-right: 1px solid #333333;
+            }
+        }
+    
