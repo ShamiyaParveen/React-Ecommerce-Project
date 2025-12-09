@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ProductModal from '../ProductModal/ProductModal'
+import { TfiFullscreen } from "react-icons/tfi";
+import { FaRegHeart } from "react-icons/fa";
 
 const ProductItems = () => {
+
+  const [isOpenProductModal, setIsOpenProductModal] = useState(false);
+
+const viewProductDetails = (id) => {
+  setIsOpenProductModal(true);  
+} 
+const closeProductModal = () => {
+  setIsOpenProductModal(false);  
+}
   return (
     <>
     
@@ -14,8 +26,8 @@ const ProductItems = () => {
                   alt="Product"
                 />
                 <div className="focus-actions">
-                  <span>♡</span>
-                  <span>⤢</span>
+                  <span><FaRegHeart /></span>
+                  <span onClick={()=>viewProductDetails(1)}><TfiFullscreen /></span>
                 </div>
               </div>
               <div className="focus-content">
@@ -31,6 +43,12 @@ const ProductItems = () => {
             </div>
           </div>
     
+
+            {
+              isOpenProductModal === true && <ProductModal closeProductModal ={closeProductModal} />
+            }
+
+
     </>
   )
 }
