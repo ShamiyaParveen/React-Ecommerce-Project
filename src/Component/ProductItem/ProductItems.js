@@ -1,18 +1,16 @@
-import React, { useState } from 'react'
-import ProductModal from '../ProductModal/ProductModal'
+import React, { useContext, useState } from 'react'
 import { TfiFullscreen } from "react-icons/tfi";
 import { FaRegHeart } from "react-icons/fa";
-
+import Rating from "@mui/material/Rating";
+import { MyContext } from '../../App';
 const ProductItems = () => {
 
-  const [isOpenProductModal, setIsOpenProductModal] = useState(false);
+ const context  = useContext(MyContext);
 
 const viewProductDetails = (id) => {
-  setIsOpenProductModal(true);  
+  context.setIsOpenProductModal(true);  
 } 
-const closeProductModal = () => {
-  setIsOpenProductModal(false);  
-}
+
   return (
     <>
     
@@ -33,7 +31,9 @@ const closeProductModal = () => {
               <div className="focus-content">
                 <div className="focus-price-row">
                   <div className="focus-price">$7.99</div>
-                  <div className="focus-rating">⭐ 4.5</div>
+                   <div>
+                <Rating name="read-only" value={4} readOnly size="small" />
+              </div>
                 </div>
                 <h4 className="focus-title">
                   Angie’s Sweet & Salty Kettle Corn
@@ -43,10 +43,6 @@ const closeProductModal = () => {
             </div>
           </div>
     
-
-            {
-              isOpenProductModal === true && <ProductModal closeProductModal ={closeProductModal} />
-            }
 
 
     </>

@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { IoClose } from "react-icons/io5";
-import { TfiFullscreen } from "react-icons/tfi";
-import { IoMdCheckmark, IoMdHeartEmpty } from "react-icons/io";
+import { IoMdCheckmark } from "react-icons/io";
+import { FaRegHeart } from "react-icons/fa";
+import { MyContext } from "../../App";
 
 // --- Mock Data for Images ---
 const imgs = [
@@ -15,25 +16,33 @@ const imgs = [
 ];
 
 const ProductModal = (props) => {
-  const [qty, setQty] = useState(1);
-  const [activeImg, setActiveImg] = useState(imgs[0]);
+    const [activeImg, setActiveImg] = useState(imgs[0]);
+    const [inputvalue, setInputValue] = useState(1);
 
-  const handleQtyChange = (type) => {
-    if (type === "dec" && qty > 1) setQty(qty - 1);
-    if (type === "inc") setQty(qty + 1);
-  };
+    const context = useContext(MyContext);
 
+    const minus = () =>{
+      if(inputvalue !== 1 && inputvalue > 0){
+        setInputValue(inputvalue-1)
+      }
+        
+    }
+
+        const plus = () =>{
+            setInputValue(inputvalue + 1);
+    }
+ 
   return (
     <Dialog
       open={true}
-      onClose={props.closeProductModal}
+      onClose={()=>context.setIsOpenProductModal(false)}
       className="product-modal"
       maxWidth="lg" // Made slightly wider for better desktop view
       scroll="body" // Allows scrolling the page if modal is tall
     >
       <div className="modal-wrapper">
         {/* Close Button */}
-        <IconButton className="close-btn" onClick={props.closeProductModal}>
+        <IconButton className="close-btn" onClick={()=>context.setIsOpenProductModal(false)}>
           <IoClose />
         </IconButton>
 
@@ -41,8 +50,7 @@ const ProductModal = (props) => {
           {/* --- LEFT COLUMN: IMAGES --- */}
           <div className="product-gallery">
             <div className="main-image-container">
-              <span className="badge-custom badge-blue">23%</span>
-              <span className="badge-custom badge-rec">RECOMMENDED</span>
+              <span className="badge-custom badge-blue text-dark">20%</span>
               <img src={activeImg} alt="Product" className="main-img" />
             </div>
 
@@ -65,19 +73,19 @@ const ProductModal = (props) => {
               All Natural Italian-Style Chicken Meatballs
             </h2>
 
-            <div className="meta-row">
-              <div className="brand-info">
-                <span className="label">Brand:</span>
-                <span className="value">Welch's</span>
-              </div>
+            <div className="meta-row d-flex justify-content-between align-items-center">
+              
               <div className="review-info">
                 <Rating name="read-only" value={4} readOnly size="small" />
                 <span className="review-count">(1 Review)</span>
               </div>
-              <div className="sku-info">
-                <span className="label">SKU:</span>
-                <span className="value">ZU49VOR</span>
-              </div>
+              <div className="wishlist-compare-row pr-5">
+              <button className="icon-text-btn">
+                <FaRegHeart size={18} /> 
+              </button>
+             
+            </div>
+
             </div>
 
             <div className="price-wrapper">
@@ -95,9 +103,9 @@ const ProductModal = (props) => {
             {/* Actions: Quantity & Add to Cart */}
             <div className="action-wrapper">
               <div className="qty-selector">
-                <button onClick={() => handleQtyChange("dec")}>-</button>
-                <input type="text" value={qty} readOnly />
-                <button onClick={() => handleQtyChange("inc")}>+</button>
+                <button onClick={minus}>-</button>
+                <input type="text" value={inputvalue} />
+                <button onClick={plus}>+</button>
               </div>
 
               <Button
@@ -109,15 +117,10 @@ const ProductModal = (props) => {
               </Button>
             </div>
 
-            <div className="wishlist-compare-row">
-              <button className="icon-text-btn">
-                <IoMdHeartEmpty size={18} /> Add to Wishlist
-              </button>
-              <button className="icon-text-btn">
-                <TfiFullscreen size={16} /> Compare
-              </button>
-            </div>
-
+              <div className="brand-info">
+                <span className="label">Brand:</span>
+                <span className="value">Welch's</span>
+              </div>
             <hr className="divider" />
 
             <ul className="product-attributes">
