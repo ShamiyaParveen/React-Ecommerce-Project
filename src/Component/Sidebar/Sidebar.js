@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+import { Link } from "react-router-dom";
 
 const categories = [
   "Men Clothing",
@@ -98,6 +99,13 @@ const Sidebar = () => {
             ))}
           </div>
         </div>
+
+              <br />
+        
+          <Link to="#">
+          <img src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dwfc3a2084/A-A-EOSS/DOW/EOSS-1.jpg" alt="Advertisement" className="img-fluid w-100 mt-4"/>
+          </Link>
+        
 
 
       </div>
