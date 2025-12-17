@@ -10,6 +10,8 @@ import { TfiLayoutGrid4Alt } from "react-icons/tfi";
 import { FaAngleDown } from "react-icons/fa";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Pagination from '@mui/material/Pagination';
+
 
 const Listing = () => {
   var bannershop = {
@@ -23,6 +25,7 @@ const Listing = () => {
   };
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [productView, setProductView] = useState('three');
   const openDropDown = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -45,10 +48,10 @@ const Listing = () => {
       <section className="listing-section">
         <div className="container">
           <div className="row">
-            <div className="col-3">
+            <div className="col-lg-3">
               <Sidebar />
             </div>
-            <div className="col-9 mt-5">
+            <div className="col-lg-9 mt-5">
               <div className="shop-banner-img pt-3">
                 <Slider {...bannershop}>
                   <div className="item">
@@ -77,16 +80,16 @@ const Listing = () => {
               </div>
               <div className="shop-filter px-2 my-4 d-flex justify-content-between align-items-center">
                 <div>
-                  <Button className="active">
+                  <Button className="active" onClick={() => setProductView('one')}>
                     <IoMdMenu />
                   </Button>
-                  <Button>
+                  <Button onClick={() => setProductView('two')}>
                     <IoGrid />
                   </Button>
-                  <Button>
+                  <Button onClick={() => setProductView('three')}>
                     <BsGrid3X3GapFill />
                   </Button>
-                  <Button>
+                  <Button onClick={() => setProductView('four')}>
                     <TfiLayoutGrid4Alt />
                   </Button>
                 </div>
@@ -146,19 +149,20 @@ const Listing = () => {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-4 px-0">
-                  <ProductItems />
-                </div>
-                 <div className="col-4 px-0">
-                  <ProductItems />
-                </div>
-                 <div className="col-4 px-0">
-                  <ProductItems />
-                </div>
+              <div className="Product-listing-cards">
+               <ProductItems itemView={productView}/>
+               <ProductItems itemView={productView}/>
+               <ProductItems itemView={productView}/>
+               <ProductItems itemView={productView}/>
+               <ProductItems itemView={productView}/>
                 </div>
 
 
+              <div className="d-flex justify-content-center my-4">
+                      <Pagination count={10} color="primary pagination" />
+                </div>
+
+{/* 35 min */}
 
             </div>
 

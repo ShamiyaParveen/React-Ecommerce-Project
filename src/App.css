@@ -109,6 +109,7 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
 .focus-price { font-size: 20px; font-weight: 800; color: #111; }
 .focus-rating { font-size: 13px; color: #777; display: flex; gap: 2px; }
 .focus-title { font-size: 16px; font-weight: 500; color: #555; margin-bottom: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.focus-stock { font-size: 14px; font-weight: 600; margin-bottom: 8px; display: block; }
 .focus-btn { width: 100%; font-size: 16px; padding: 10px; background: #111; color: #fff; border: none; border-radius: 8px; font-weight: 400; cursor: pointer; opacity: 1; transition: 0.4s ease; }
 
 /* Badge wrapper */
@@ -398,4 +399,12 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
 .filteration span{font-size:14px;color:#555;font-weight:500}
 .css-1rju2q6-MuiButtonBase-root-MuiMenuItem-root{padding:4px 24px !important; }
 .filtershort .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper{left:900px !important;}
-
+.Product-listing-cards{display: flex; flex-wrap: wrap; justify-content: start;}
+.Product-listing-cards .product-slide.four{width:25% !important;}
+.Product-listing-cards .product-slide.three{width:33.3% !important;}
+.Product-listing-cards .product-slide.two{width:50% !important;}
+.Product-listing-cards .product-slide.two .focus-image-container{height:300px !important; object-fit: contain !important;}
+.Product-listing-cards .product-slide.one{width:100% !important;}
+.Product-listing-cards .product-slide.one .card-focus{display: flex !important; justify-content: start; align-items: center;}
+.Product-listing-cards .product-slide.one .card-focus .focus-price-row{flex-direction: column !important; justify-content: center !important; align-items: start !important;}
+.MuiPagination-root{padding-bottom: 20px; border-bottom: none !important; box-shadow: none !important; }
