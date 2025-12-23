@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import ProductItems from './ProductItems';
 
 
-const Products = () => {
+const Products = (props) => {
     const productcards = {
   dots: false,
   infinite: true,
@@ -43,7 +43,7 @@ const Products = () => {
   <div className="row mb-4">
             <div className="col-lg-7">
               <p className="text-left sub-heading">Our Shop</p>
-              <h2 className="section-title text-left">Latest <span className="gradient-text">Products</span></h2>
+              <h2 className="section-title text-left">  {props.title} <span className="gradient-text">Products</span></h2>
               </div>
                <div className="col-lg-5 align-self-center">
               <Link to='/' className="see-all-link float-right"><Button>View all</Button></Link>
