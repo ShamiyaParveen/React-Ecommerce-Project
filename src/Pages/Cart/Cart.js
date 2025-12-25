@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaTimes, FaMinus, FaPlus } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaTimes } from 'react-icons/fa';
 import { 
   Button, 
   TextField, 
@@ -7,11 +7,14 @@ import {
   Radio, 
   RadioGroup, 
   FormControlLabel, 
-  Divider,
-  Typography
-} from '@mui/material';
+  Divider} from '@mui/material';
+import Rating from "@mui/material/Rating";
+import ProductQuantity from '../../Component/ProductQuantity/ProductQuantity';
+
+
 
 const Cart = () => {
+  
   // --- Static Data to match image ---
   const cartItems = [
     {
@@ -52,9 +55,9 @@ const Cart = () => {
           
           {/* Free Shipping Notice */}
           <div className="free-shipping-box mb-4">
-            <Typography variant="body1" className="mb-3 text-secondary" sx={{ fontSize: '0.95rem' }}>
+            <p  className="mb-3 text-secondary">
               Add <span className="fw-bold" style={{ color: '#e91e63' }}>${neededAmount}</span> to cart and get free shipping!
-            </Typography>
+            </p>
             <LinearProgress
               variant="determinate" 
               value={progressValue} 
@@ -62,26 +65,36 @@ const Cart = () => {
             />
           </div>
 
-          {/* Table Header (Desktop Only) */}
+
+
+        
+            <div className='card'>
+               <div className='card-body'>
+ {/* Table Header (Desktop Only) */}
           {/* d-none (Hidden on Mobile) | d-md-flex (Visible on Tablet+) */}
           <div className="d-none d-md-flex row cart-header">
-            <div className="col-md-6 ps-4">Product</div>
+            <div className="col-md-5 pl-4">Product</div>
             <div className="col-md-2 text-center">Price</div>
-            <div className="col-md-2 text-center">Quantity</div>
+            <div className="col-md-3 text-center">Quantity</div>
             <div className="col-md-2 text-end pe-4">Subtotal</div>
           </div>
 
           {/* Cart Items List */}
           {cartItems.map((item) => (
-            <div key={item.id} className="row align-items-center cart-item-row">
+            <div key={item.id} className="row align-items-center cart-item-row flex-nowrap">
               
               {/* Product Image & Name */}
               {/* col-md-6 (50% on desktop) | Full width on mobile */}
-              <div className="col-md-6 d-flex align-items-center mb-3 mb-md-0 ps-md-4">
+              <div className="col-md-5 d-flex align-items-center mb-3 mb-md-0 ps-md-4">
                 <div className="img-wrapper">
                   <img src={item.image} alt={item.name} />
                 </div>
+                <div className='d-flex flex-column'>
                 <span className="product-name">{item.name}</span>
+                  <div>
+                           <Rating name="read-only" value={4} readOnly size="small" />
+                         </div>
+                         </div>
               </div>
 
               {/* Price */}
@@ -89,20 +102,12 @@ const Cart = () => {
               <div className="col-md-2 col-4 text-md-center text-muted fw-bold">
                 ${item.price.toFixed(2)}
               </div>
-
-              {/* Quantity Stepper */}
-              {/* col-md-2 (desktop) | col-4 (mobile) */}
-              <div className="col-md-2 col-4 text-center">
-                <div className="qty-stepper">
-                  <button className="qty-btn"><FaMinus size={10} /></button>
-                  <span className="qty-value">{item.quantity}</span>
-                  <button className="qty-btn"><FaPlus size={10} /></button>
+              <div className='col-md-3 col-4 d-flex justify-content-center align-items-center pro-quant'>
+                <ProductQuantity />
                 </div>
-              </div>
-
               {/* Subtotal & Remove */}
               {/* col-md-2 (desktop) | col-4 (mobile) */}
-              <div className="col-md-2 col-4 d-flex justify-content-end align-items-center pe-md-4">
+              <div className="col-md-2 col-4 d-flex justify-content-end align-items-center pr-md-4">
                 <span className="fw-bold mr-4 text-dark">${(item.price * item.quantity).toFixed(2)}</span>
                 <FaTimes className="remove-icon" />
               </div>
@@ -112,7 +117,7 @@ const Cart = () => {
           {/* Coupon and Remove All Buttons */}
           <div className="row mt-4 pt-2">
             {/* Input Section: Stacked on mobile, side-by-side on desktop */}
-            <div className="col-md-6 d-flex mb-3 mb-md-0">
+            <div className="col-md-8 d-flex mb-3 mb-md-0">
               <TextField 
                 variant="outlined" 
                 placeholder="Coupon code" 
@@ -127,12 +132,14 @@ const Cart = () => {
             </div>
             
             {/* Remove Button Section */}
-            <div className="col-md-6 text-end">
+            <div className="col-md-4 text-end">
               <Button variant="contained" disableElevation className="btn-blue">
                 Remove All
               </Button>
             </div>
           </div>
+            </div>
+         </div>
         </div>
 
         {/* ================= RIGHT COLUMN: CART TOTALS ================= */}

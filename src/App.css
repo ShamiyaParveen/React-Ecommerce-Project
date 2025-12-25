@@ -505,5 +505,6 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
 .btn-checkout{background-color:#e91e63!important;font-weight:700!important;padding:12px!important;text-transform:none!important;border-radius:4px!important;font-size:1rem!important;box-shadow:0 4px 6px rgba(233,30,99,.2)!important;}
 .btn-checkout:hover{background-color:#d81b60!important;}
 .css-1cu450-MuiButtonBase-root-MuiButton-root{font-family: 'Poppins', sans-serif !important;}
-
+.pro-quant .action-wrapper{margin-bottom: 0px; height:40px; }
+.pro-quant .qty-selector{border-radius: 18px; background-color: #eaeaea;}
  

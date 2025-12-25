@@ -6,6 +6,9 @@ import { MyContext } from "../../App";
 import ProductImage from "../ProductImage/ProductImage";
 import ProductQuantity from "../ProductQuantity/ProductQuantity";
 import { IoMdCheckmark } from "react-icons/io";
+import ProductDetails from "../ProductDetailsSingle/ProductDetailsSingle";
+import ProductDetailsSingle from "../ProductDetailsSingle/ProductDetailsSingle";
+import AddCartButton from "../AddCartButton/AddCartButton";
 
 
 const ProductModal = (props) => {
@@ -37,8 +40,9 @@ const ProductModal = (props) => {
 
              <div className="product-details-modal">
 
-
+              <ProductDetailsSingle />
               <ProductQuantity />
+              <AddCartButton />
  
             <hr className="divider" style={{marginTop:'70px'}} />
 

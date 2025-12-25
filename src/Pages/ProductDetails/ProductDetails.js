@@ -16,6 +16,8 @@ import Button from '@mui/material/Button'
 import { FaStar, FaRegStar } from "react-icons/fa"
 
 import Products from '../../Component/ProductItem/Products'
+import ProductDetailsSingle from '../../Component/ProductDetailsSingle/ProductDetailsSingle'
+import AddCartButton from '../../Component/AddCartButton/AddCartButton'
 
 /* ---------- TAB PANEL ---------- */
 function TabPanel({ children, value, index }) {
@@ -38,7 +40,9 @@ const ProductDetails = () => {
           <ProductImage />
 
           <div className="product-details px-4">
+            <ProductDetailsSingle />
             <ProductQuantity />
+            <AddCartButton />
 
             <div className="footer-tags pt-5">
               <p>Category: <span>Meats & Seafood</span></p>

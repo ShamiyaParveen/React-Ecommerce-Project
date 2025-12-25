@@ -52,9 +52,11 @@ const Header = () => {
                 </div>
 
                 <div className='position-relative ml-2'>
+                    <Link to={'cart'}>
                     <Button className='cart-icon'>
                     <IoBagOutline />
                 </Button>
+                </Link>
                 <span className='count d-flex justify-content-center align-items-center'>
                     1
                 </span>
