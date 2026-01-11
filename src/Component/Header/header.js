@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { MyContext } from '../../App';
 
 
+
 const Header = () => {
 
      const context = useContext(MyContext);
@@ -43,9 +44,15 @@ const Header = () => {
           
 
             <div className='part3 d-flex align-items-center'>
-                <Button className='user-icon mr-3'>
+                {
+                    context.isLogin!==true ? <Link to={'signUp'}><Button className='signup-btn text-white px-3 mr-3'>
+                SignUp
+                </Button> </Link> :  <Link to={'signIn'}><Button className='user-icon mr-3'>
                 <FiUser />
-                </Button>
+                </Button> </Link>
+                }
+
+                
 
                 <div className='ml-auto' >
                     <span className='price'>$55.3</span>

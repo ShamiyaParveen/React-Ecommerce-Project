@@ -507,4 +507,10 @@ nav { padding-bottom: 20px; border-bottom: 1px solid #dedede; box-shadow: 0 2px 
 .css-1cu450-MuiButtonBase-root-MuiButton-root{font-family: 'Poppins', sans-serif !important;}
 .pro-quant .action-wrapper{margin-bottom: 0px; height:40px; }
 .pro-quant .qty-selector{border-radius: 18px; background-color: #eaeaea;}
- 
+ .logowrapperlogin{width:200px;}
+ .signpageui{height:100vh; padding: 0;}
+ ::placeholder {color: #aaa; font-size: 14px;}
+  input, optgroup, select, textarea {font-size: 14px !important; font-weight: 300 !important; color: #2a2a2a !important;}
+ .google-logo{width:50%; margin-right:10px;}
+ .text-sm{ font-size: 14px !important; }
+.signup-btn{background-color: #4EB7DC !important;}

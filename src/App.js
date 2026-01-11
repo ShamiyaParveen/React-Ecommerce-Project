@@ -10,6 +10,8 @@ import ProductModal from "./Component/ProductModal/ProductModal";
 import Listing from "./Pages/Listing/Listing";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import Cart from "./Pages/Cart/Cart";
+import SignIn from "./Pages/SignIn/SignIn";
+import SignUp from "./Pages/SignUp/SignUp";
 
 const MyContext = createContext();
 
@@ -17,6 +19,8 @@ function App() {
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('');
   const [isOpenProductModal, setIsOpenProductModal] = useState(false);
+  const [isHeaderFooterShow, setisHeaderFooterShow] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries");
@@ -36,23 +40,32 @@ function App() {
    selectedCountry,
     setSelectedCountry,
     setIsOpenProductModal,
-    isOpenProductModal
+    isHeaderFooterShow,
+     setisHeaderFooterShow,
+    isOpenProductModal,
+    isLogin,
+    setIsLogin
   };
 
   return (
     <BrowserRouter>
       <MyContext.Provider value={value}>
-        <Header />
+        {
+          isHeaderFooterShow === true &&  <Header />
+        }
+       
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/cat/:id" exact={true} element={<Listing />} />
            <Route path="/product/:id" exact={true} element={<ProductDetails />} />
             <Route path="/cart" exact={true} element={<Cart />} />
-             <Route path="/signIn" exact={true} element={<Cart />} />
-              <Route path="/signUp" exact={true} element={<Cart />} />
+             <Route path="/signIn" exact={true} element={<SignIn />} />
+              <Route path="/signUp" exact={true} element={<SignUp />} />
         </Routes>
-        <Footer />
-
+       
+          {
+            isHeaderFooterShow === true &&  <Footer />
+          }
         
             {
               isOpenProductModal === true && <ProductModal />
