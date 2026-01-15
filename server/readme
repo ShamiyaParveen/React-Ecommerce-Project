@@ -1,0 +1,16 @@
+const express = require('express'); //Iska use hum server banane, API create karne, aur routes handle karne ke liye karte hain
+//Express ek web application framework hai jo Node.js ke upar bana hai. Ye web applications aur APIs banane ke liye use hota hai
+
+const app = express(); //Express application ka instance banate hain or app hi hamara main server object hota hai
+
+
+const bodyParser = require('body-parser'); //Jab frontend se data aata hai (name, email, password), body-parser use data ko samajhne me help karta hai so that hum us data ko easily access kar saken
+
+
+const mongoose = require('mongoose'); //Mongoose MongoDB ke sath interact karne ke liye use hota hai, jaise ki data ko save karna, retrieve karna, update karna, aur delete karna  or Mongoose ek tool hai jo MongoDB database ko Node.js se connect karta hai
+
+
+const cors = require('cors'); //CORS (Cross-Origin Resource Sharing) ek security feature hai jo web browsers me implement hota hai. Ye allow karta hai ki ek domain se dusre domain par resources ko access kiya ja sake
+
+
+require('dotenv/config'); //dotenv/config ka use hum environment variables ko load karne ke liye karte hain, jisse sensitive information jaise ki database credentials ko code me hardcode na karna pade
