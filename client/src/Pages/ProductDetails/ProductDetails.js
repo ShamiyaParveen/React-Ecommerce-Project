@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ProductImage from '../../Component/ProductImage/ProductImage'
 import ProductQuantity from '../../Component/ProductQuantity/ProductQuantity'
 
@@ -18,6 +18,9 @@ import { FaStar, FaRegStar } from "react-icons/fa"
 import Products from '../../Component/ProductItem/Products'
 import ProductDetailsSingle from '../../Component/ProductDetailsSingle/ProductDetailsSingle'
 import AddCartButton from '../../Component/AddCartButton/AddCartButton'
+import { MyContext } from '../../App'
+import { useParams } from 'react-router-dom'
+import './product-details.css';
 
 /* ---------- TAB PANEL ---------- */
 function TabPanel({ children, value, index }) {
@@ -25,9 +28,22 @@ function TabPanel({ children, value, index }) {
 }
 
 const ProductDetails = () => {
+  const { id } = useParams();
+  const context = useContext(MyContext);
 
   const [tabValue, setTabValue] = useState(0);
   const [rating, setRating] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+
+  const product = context.products.find((item) => String(item.id) === id);
+
+  if (context.productsLoading) {
+    return <div className="container py-5"><p className="status-message">Product loading...</p></div>;
+  }
+
+  if (!product) {
+    return <div className="container py-5"><p className="status-message error-message">Product not found.</p></div>;
+  }
 
    
 
@@ -37,16 +53,16 @@ const ProductDetails = () => {
 
         {/* PRODUCT ROW */}
         <div className="product-content">
-          <ProductImage />
+          <ProductImage product={product} />
 
           <div className="product-details px-4">
-            <ProductDetailsSingle />
-            <ProductQuantity />
-            <AddCartButton />
+            <ProductDetailsSingle product={product} />
+            <ProductQuantity value={quantity} onChange={setQuantity} />
+            <AddCartButton product={product} quantity={quantity} />
 
             <div className="footer-tags pt-5">
-              <p>Category: <span>Meats & Seafood</span></p>
-              <p>Tags: <span>chicken, natural, organic, healthy</span></p>
+              <p>Category: <span>{product.category}</span></p>
+              <p>Tags: <span>{product.tags?.join(", ") || product.category}</span></p>
             </div>
 
             <div className='single-pro-ques py-4'>
@@ -56,7 +72,7 @@ const ProductDetails = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    This product is crafted using high-quality materials for durability and performance.
+                    {product.description}
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -67,7 +83,7 @@ const ProductDetails = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    Fast delivery across India with easy 7-day returns.
+                    Fast delivery across India with easy returns. This demo project stores cart items in local storage.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -87,14 +103,14 @@ const ProductDetails = () => {
           </Box>
 
           <TabPanel value={tabValue} index={0}>
-            <p>Premium quality product designed for daily use with long-lasting freshness.</p>
-            <p>Carefully packed to preserve taste and nutritional value.</p>
+            <p>{product.description}</p>
+            <p>This product comes from a public API and is shown here through React state management.</p>
           </TabPanel>
 
           <TabPanel value={tabValue} index={1}>
-            <p><strong>Weight:</strong> 500g</p>
-            <p><strong>Storage:</strong> Refrigerated</p>
-            <p><strong>Country:</strong> India</p>
+            <p><strong>Brand:</strong> {product.brand || "DummyJSON"}</p>
+            <p><strong>Category:</strong> {product.category}</p>
+            <p><strong>Stock:</strong> {product.stock}</p>
           </TabPanel>
 
           {/* REVIEWS */}

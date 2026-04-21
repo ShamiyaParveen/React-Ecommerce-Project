@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import Sidebar from "../../Component/Sidebar/Sidebar";
 import Slider from "react-slick";
 import ProductItems from "../../Component/ProductItem/ProductItems";
@@ -11,10 +11,14 @@ import { FaAngleDown } from "react-icons/fa";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Pagination from '@mui/material/Pagination';
-
+import { MyContext } from "../../App";
+import { useParams } from "react-router-dom";
+import './listing.css';
 
 const Listing = () => {
-  var bannershop = {
+  const context = useContext(MyContext);
+  const { id } = useParams();
+  const bannershop = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -35,6 +39,7 @@ const Listing = () => {
   };
 
   const [dropNum, setdropNum] = useState(null);
+  const [itemsToShow, setItemsToShow] = useState(8);
   const openDropDownnum = Boolean(dropNum);
   const handleClick1 = (event) => {
     setdropNum(event.currentTarget);
@@ -42,6 +47,36 @@ const Listing = () => {
   const handleClose1 = () => {
     setdropNum(null);
   };
+
+  const selectedCategory = id === "all" ? "" : id;
+  const categoryProducts = useMemo(() => {
+    let baseProducts = context.products;
+
+    if (selectedCategory) {
+      baseProducts = context.products.filter(
+        (product) => product.category === selectedCategory
+      );
+    }
+
+    const query = context.searchTerm.trim().toLowerCase();
+
+    if (!query) {
+      return baseProducts;
+    }
+
+    return baseProducts.filter((product) => {
+      return (
+        product.title.toLowerCase().includes(query) ||
+        product.category.toLowerCase().includes(query) ||
+        product.brand?.toLowerCase().includes(query)
+      );
+    });
+  }, [context.products, context.searchTerm, selectedCategory]);
+
+  const visibleProducts = useMemo(
+    () => categoryProducts.slice(0, itemsToShow),
+    [categoryProducts, itemsToShow]
+  );
 
   return (
     <>
@@ -95,6 +130,11 @@ const Listing = () => {
                 </div>
 
                 <div className="filteration ml-auto pr-3">
+                  <span className="selected-category-label">
+                    {selectedCategory
+                      ? context.formatLabel(selectedCategory)
+                      : "All Products"}
+                  </span>
                   <span onClick={handleClick}>
                     Sort by <FaAngleDown />
                   </span>
@@ -140,26 +180,39 @@ const Listing = () => {
                       },
                     }}
                   >
-                    <MenuItem onClick={handleClose1}>2</MenuItem>
-                    <MenuItem onClick={handleClose1}>4</MenuItem>
-                    <MenuItem onClick={handleClose1}>6</MenuItem>
-                    <MenuItem onClick={handleClose1}>8</MenuItem>
-                    <MenuItem onClick={handleClose1}>10</MenuItem>
+                    {[4, 6, 8, 10, 12].map((count) => (
+                      <MenuItem
+                        key={count}
+                        onClick={() => {
+                          setItemsToShow(count);
+                          handleClose1();
+                        }}
+                      >
+                        {count}
+                      </MenuItem>
+                    ))}
                   </Menu>
                 </div>
               </div>
 
               <div className="Product-listing-cards">
-               <ProductItems itemView={productView}/>
-               <ProductItems itemView={productView}/>
-               <ProductItems itemView={productView}/>
-               <ProductItems itemView={productView}/>
-               <ProductItems itemView={productView}/>
-                </div>
+                {context.productsLoading && <p className="status-message">Products loading...</p>}
+                {!context.productsLoading && context.productsError && (
+                  <p className="status-message error-message">{context.productsError}</p>
+                )}
+                {!context.productsLoading && !context.productsError && visibleProducts.length === 0 && (
+                  <p className="status-message">No products matched your search.</p>
+                )}
+                {!context.productsLoading &&
+                  !context.productsError &&
+                  visibleProducts.map((product) => (
+                    <ProductItems key={product.id} itemView={productView} product={product} />
+                  ))}
+              </div>
 
 
               <div className="d-flex justify-content-center my-4">
-                      <Pagination count={10} color="primary pagination" />
+                      <Pagination count={Math.max(1, Math.ceil(categoryProducts.length / itemsToShow))} color="primary pagination" />
                 </div>
 
 {/* 35 min */}

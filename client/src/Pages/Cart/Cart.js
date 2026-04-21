@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { 
   Button, 
@@ -10,36 +10,22 @@ import {
   Divider} from '@mui/material';
 import Rating from "@mui/material/Rating";
 import ProductQuantity from '../../Component/ProductQuantity/ProductQuantity';
+import { MyContext } from '../../App';
+import './cart.css';
 
 
 
 const Cart = () => {
-  
-  // --- Static Data to match image ---
-  const cartItems = [
-    {
-      id: 1,
-      name: "All Natural Italian-Style Chicken Meatballs",
-      price: 7.25,
-      quantity: 1,
-      image: "https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg",
-    },
-    {
-      id: 2,
-      name: "Angie's Boomchickapop Sweet & Salty Kettle Corn - Frito Lay, 1 KG",
-      price: 7.99,
-      quantity: 1,
-      image: "https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg",
-    }
-  ];
+  const context = useContext(MyContext);
+  const cartItems = context.cartItems;
 
   // --- Calculations ---
-  const subtotal = 15.24;
-  const shippingCost = 5.00;
-  const total = 20.24;
+  const subtotal = context.cartSubtotal;
+  const shippingCost = context.shippingCost;
+  const total = context.cartTotal;
   const freeShippingThreshold = 50.00;
-  const neededAmount = (freeShippingThreshold - subtotal).toFixed(2);
-  const progressValue = (subtotal / freeShippingThreshold) * 100;
+  const neededAmount = Math.max(0, freeShippingThreshold - subtotal).toFixed(2);
+  const progressValue = Math.min((subtotal / freeShippingThreshold) * 100, 100);
 
   return (
     <div className="container py-5 ">
@@ -80,6 +66,13 @@ const Cart = () => {
           </div>
 
           {/* Cart Items List */}
+          {cartItems.length === 0 && (
+            <div className="py-5 text-center">
+              <h5>Your cart is empty</h5>
+              <p className="text-muted mb-0">Add products from the shop page to see them here.</p>
+            </div>
+          )}
+
           {cartItems.map((item) => (
             <div key={item.id} className="row align-items-center cart-item-row flex-nowrap">
               
@@ -87,12 +80,12 @@ const Cart = () => {
               {/* col-md-6 (50% on desktop) | Full width on mobile */}
               <div className="col-md-5 d-flex align-items-center mb-3 mb-md-0 ps-md-4">
                 <div className="img-wrapper">
-                  <img src={item.image} alt={item.name} />
+                  <img src={item.thumbnail} alt={item.title} />
                 </div>
                 <div className='d-flex flex-column'>
-                <span className="product-name">{item.name}</span>
+                <span className="product-name">{item.title}</span>
                   <div>
-                           <Rating name="read-only" value={4} readOnly size="small" />
+                           <Rating name="read-only" value={item.rating || 0} readOnly precision={0.5} size="small" />
                          </div>
                          </div>
               </div>
@@ -103,13 +96,19 @@ const Cart = () => {
                 ${item.price.toFixed(2)}
               </div>
               <div className='col-md-3 col-4 d-flex justify-content-center align-items-center pro-quant'>
-                <ProductQuantity />
+                <ProductQuantity
+                  value={item.quantity}
+                  onChange={(newValue) => {
+                    const actionType = newValue > item.quantity ? "increase" : "decrease";
+                    context.updateCartQuantity(item.id, actionType);
+                  }}
+                />
                 </div>
               {/* Subtotal & Remove */}
               {/* col-md-2 (desktop) | col-4 (mobile) */}
               <div className="col-md-2 col-4 d-flex justify-content-end align-items-center pr-md-4">
                 <span className="fw-bold mr-4 text-dark">${(item.price * item.quantity).toFixed(2)}</span>
-                <FaTimes className="remove-icon" />
+                <FaTimes className="remove-icon" onClick={() => context.removeCartItem(item.id)} />
               </div>
             </div>
           ))}
@@ -133,7 +132,7 @@ const Cart = () => {
             
             {/* Remove Button Section */}
             <div className="col-md-4 text-end">
-              <Button variant="contained" disableElevation className="btn-blue">
+              <Button variant="contained" disableElevation className="btn-blue" onClick={context.clearCart}>
                 Remove All
               </Button>
             </div>

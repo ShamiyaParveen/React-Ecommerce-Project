@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import img_logo from '../../assets/images/logo.png';
 import CountryDropDown from '../CountryDropDown/country';
-import { IoSearch } from "react-icons/io5";
-import Button from '@mui/material/Button';
+import './header.css';
 import { FiUser } from "react-icons/fi";
 import { IoBagOutline } from "react-icons/io5";
 import SearchBox from './SearchBox/search';
@@ -45,27 +44,27 @@ const Header = () => {
 
             <div className='part3 d-flex align-items-center'>
                 {
-                    context.isLogin!==true ? <Link to={'signUp'}><Button className='signup-btn text-white px-3 mr-3'>
+                    context.isLogin!==true ? <Link to={'signUp'}><button type="button" className='signup-btn text-white px-3 mr-3 simple-header-btn'>
                 SignUp
-                </Button> </Link> :  <Link to={'signIn'}><Button className='user-icon mr-3'>
+                </button> </Link> :  <Link to={'signIn'}><button type="button" className='user-icon mr-3 simple-icon-btn'>
                 <FiUser />
-                </Button> </Link>
+                </button> </Link>
                 }
 
                 
 
                 <div className='ml-auto' >
-                    <span className='price'>$55.3</span>
+                    <span className='price'>${context.cartSubtotal.toFixed(2)}</span>
                 </div>
 
                 <div className='position-relative ml-2'>
                     <Link to={'cart'}>
-                    <Button className='cart-icon'>
+                    <button type="button" className='cart-icon simple-icon-btn'>
                     <IoBagOutline />
-                </Button>
+                </button>
                 </Link>
                 <span className='count d-flex justify-content-center align-items-center'>
-                    1
+                    {context.cartCount}
                 </span>
                 </div>
                 

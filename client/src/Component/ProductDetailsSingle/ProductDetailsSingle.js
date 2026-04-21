@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { FaRegHeart } from "react-icons/fa";
 import Rating from "@mui/material/Rating";
+import './product-details-single.css';
 
 
-const ProductDetailsSingle = () => {
+const ProductDetailsSingle = ({ product }) => {
      const [activeSize, setActiveSize] = useState(null);
+     const productSizes = useMemo(() => ["Small", "Medium", "Large", "XL"], []);
 
         const isActive = (index) => {
             setActiveSize(index);
+        }
+
+        if (!product) {
+          return null;
         }
 
   return (
@@ -15,20 +21,20 @@ const ProductDetailsSingle = () => {
     
       <div className="product-details">
             <h2 className="product-title">
-              All Natural Italian-Style Chicken Meatballs
+              {product.title}
             </h2>
 
              <div className="brand-info mb-2">
                 <span className="label">Brand:</span>
-                <span className="value">Welch's</span>
+                <span className="value">{product.brand || "DummyJSON"}</span>
               </div>
 
 
             <div className="row py-2 pr-4  d-flex justify-content-between align-items-center">
               
               <div className="review-info">
-                <Rating name="read-only" value={4} readOnly size="small" />
-                <span className="review-count">(1 Review)</span>
+                <Rating name="read-only" value={product.rating || 0} readOnly precision={0.5} size="small" />
+                <span className="review-count">({product.rating} Rating)</span>
               </div>
               <div className="row pr-5">
               <button className="icon-text-btn">
@@ -40,15 +46,17 @@ const ProductDetailsSingle = () => {
             </div>
 
             <div className="price-wrapper">
-              <span className="old-price">$9.35</span>
-              <span className="new-price">$7.25</span>
-              <span className="stock-status in-stock">IN STOCK</span>
+              <span className="old-price">
+                ${Math.round(product.price + product.price * ((product.discountPercentage || 0) / 100))}
+              </span>
+              <span className="new-price">${product.price}</span>
+              <span className="stock-status in-stock">
+                {product.stock > 0 ? "IN STOCK" : "OUT OF STOCK"}
+              </span>
             </div>
 
             <p className="description">
-              Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus
-              malesuada tincidunt. Class aptent taciti sociosqu ad litora
-              torquent per conubia nostra.
+              {product.description}
             </p>
 
 
@@ -56,38 +64,17 @@ const ProductDetailsSingle = () => {
               <span>Size / Weight:</span>
 
               <ul className="list list-inline mb-0 pl-4">
-                <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 0 ? 'active' : ''}`}
-                    onClick={() => isActive(0)}
-                  >
-                    50g
-                  </a>
-                </li>
-                  <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 1 ? 'active' : ''}`}
-                    onClick={() => isActive(1)}
-                  >
-                   100g
-                  </a>
-                </li>
-                  <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 2 ? 'active' : ''}`}
-                    onClick={() => isActive(2)}
-                  >
-                    200g
-                  </a>
-                </li>
-                  <li className="list-inline-item">
-                  <a
-                    className={`tag ${activeSize === 3 ? 'active' : ''}`}
-                    onClick={() => isActive(3)}
-                  >
-                    350g
-                  </a>
-                </li>
+                {productSizes.map((size, index) => (
+                  <li className="list-inline-item" key={size}>
+                    <button
+                      type="button"
+                      className={`tag tag-button ${activeSize === index ? 'active' : ''}`}
+                      onClick={() => isActive(index)}
+                    >
+                      {size}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
               </div>

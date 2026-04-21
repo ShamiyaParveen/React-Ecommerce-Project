@@ -5,6 +5,7 @@ import gg from '../../assets/images/gg.png';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { HiMiniEnvelope } from "react-icons/hi2";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import '../auth.css';
 
 
 // MUI Components for inner elements
@@ -183,7 +184,7 @@ const SignUp = () => {
               </Button>
                  <div className="text-center d-flex flex-column mt-3">
                    <Link href="#" className='my-2' underline="hover" sx={{ fontSize: '0.75rem',  color: accentColor, fontWeight: 'bold' }}>
-                    Forgot Password?
+                    Forgot Password?np
                   </Link>
               <small className="text-muted mb-2">
                 Don't have an account?{' '}

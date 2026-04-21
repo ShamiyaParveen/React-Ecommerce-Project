@@ -1,17 +1,29 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { TfiFullscreen } from "react-icons/tfi";
 import { FaRegHeart } from "react-icons/fa";
 import Rating from "@mui/material/Rating";
 import { MyContext } from '../../App';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const ProductItems = (props) => {
-
  const context  = useContext(MyContext);
+ const navigate = useNavigate();
+ const product = props.product;
+ const isInCart = context.cartItems.some((item) => item.id === product?.id);
 
-const viewProductDetails = (id) => {
-  context.setIsOpenProductModal(true);  
-} 
+ if (!product) {
+  return null;
+ }
+
+ const handleCartAction = () => {
+  if (isInCart) {
+    navigate("/cart");
+    return;
+  }
+
+  context.addToCart(product);
+ };
 
   return (
     <>
@@ -20,18 +32,20 @@ const viewProductDetails = (id) => {
 
     {/* IMAGE SECTION */}
     <div className="focus-image-container">
-      <div className="discount-badge">-20%</div>
+      <div className="discount-badge">-{Math.round(product.discountPercentage || 0)}%</div>
 
-      <img
-        src="https://images-magento.shoppersstop.com/pub/media/catalog/product/S25711GDNST03/S25711GDNST03_CORAL/S25711GDNST03_CORAL.jpg_2000Wx3000H"
-        alt="Product"
-      />
+      <Link to={`/product/${product.id}`}>
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+        />
+      </Link>
 
       <div className="focus-actions">
         <span>
           <FaRegHeart />
         </span>
-        <span onClick={() => viewProductDetails(1)}>
+        <span onClick={() => context.openProductModal(product)}>
           <TfiFullscreen />
         </span>
       </div>
@@ -39,18 +53,24 @@ const viewProductDetails = (id) => {
 
     {/* CONTENT SECTION */}
     <div className="focus-content">
-      <h4 className="focus-title">
-        Angie’s Sweet & Salty Kettle Corn
-      </h4>
-      <span className="focus-stock text-success">In Stock</span>
+      <Link to={`/product/${product.id}`} className="product-card-link">
+        <h4 className="focus-title">
+          {product.title}
+        </h4>
+      </Link>
+      <span className="focus-stock text-success">
+        {product.stock > 0 ? "In Stock" : "Out of Stock"}
+      </span>
       <div className="focus-price-row">
-        <div className="focus-price">$7.99</div>
+        <div className="focus-price">${product.price}</div>
         <div>
-          <Rating name="read-only" value={4} readOnly size="small" />
+          <Rating name="read-only" value={product.rating || 0} readOnly precision={0.5} size="small" />
         </div>
       </div>
 
-      <button className="focus-btn">Add to Cart</button>
+      <button className="focus-btn" onClick={handleCartAction}>
+        {isInCart ? "Go to Cart" : "Add to Cart"}
+      </button>
     </div>
 
   </div>

@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ProductItems from "../ProductItem/ProductItems";
+import { MyContext } from "../../App";
+import './bestseller.css';
+import banner1 from '../../assets/banner/banner1.jpg'
+import banner3 from '../../assets/banner/banner3.jpg'
+import banner4 from '../../assets/banner/banner4.jpg'
+import banner5 from '../../assets/banner/banner5.jpg'
+import banner6 from '../../assets/banner/banner6.jpg'
+import bestseller from '../../assets/images/bestseller.png'
+
+
 
 // 10 video
 
 
 const BestSeller = () => {
+  const context = useContext(MyContext);
   const productcards = {
     dots: false,
     infinite: true,
@@ -15,6 +26,7 @@ const BestSeller = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
+    arrows: true,
     responsive: [
       {
         breakpoint: 992,
@@ -26,12 +38,14 @@ const BestSeller = () => {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
+          arrows: false,
         },
       },
       {
-        breakpoint: 576,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          arrows: false,
         },
       },
     ],
@@ -44,6 +58,7 @@ const BestSeller = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
+    arrows: true,
     responsive: [
       {
         breakpoint: 992,
@@ -55,12 +70,14 @@ const BestSeller = () => {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
+          arrows: false,
         },
       },
       {
-        breakpoint: 576,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          arrows: false,
         },
       },
     ],
@@ -75,9 +92,9 @@ const BestSeller = () => {
             <div className="col-3 sticky-section  d-none d-lg-block">
               <div className="d-flex flex-column justify-content-center">
                <img
-                src="https://rukminim2.flixcart.com/www/1060/1560/promos/26/09/2023/6c3c5fe2-c236-4fa2-8d97-595e1e01da01.jpg?q=60"
+                src={bestseller}
                 alt="Banner"
-                className="img-fluid rounded mb-4"
+                className="img-fluid rounded mb-4 h-100"
               />
            
               </div>
@@ -85,25 +102,22 @@ const BestSeller = () => {
             </div>
             <div className="col-lg-9 scroll-section col-12 ">
               <div className="row mb-4">
-                <div className="col-lg-7">
+                <div className="col-12 col-lg-7">
                   <p className="text-left sub-heading">Do not miss</p>
                   <h2 className="section-title text-left">
                     Best <span className="gradient-text"> Sellers</span>
                   </h2>
                 </div>
-                <div className="col-lg-5 align-self-center">
+                <div className="col-12 col-lg-5 align-self-center">
                   <Link to="/" className="see-all-link float-right">
                     <Button>View all</Button>
                   </Link>
                 </div>
               </div>
               <Slider {...productcards} className="product-slider">
-                <ProductItems />
-                <ProductItems />
-                <ProductItems />
-                <ProductItems />
-                <ProductItems />
-                <ProductItems />
+                {context.bestSellerProducts.map((product) => (
+                  <ProductItems key={product.id} product={product} />
+                ))}
               </Slider>
 
              
@@ -112,16 +126,16 @@ const BestSeller = () => {
                 <div className="col-12">
                    <div className="pt-4">
                
-                 <div class="discount-banner">
-                  <div class="container d-flex justify-content-center align-items-center">
-                    <div class="promo-text">
+                 <div className="discount-banner">
+                  <div className="container d-flex justify-content-center align-items-center">
+                    <div className="promo-text">
                       Super discount for your{" "}
-                      <span class="promo-highlight">first purchase.</span>
+                      <span className="promo-highlight">first purchase.</span>
                     </div>
 
-                    <div class="coupon-code">FREE25BAC</div>
+                    <div className="coupon-code">FREE25BAC</div>
 
-                    <div class="instruction-text">
+                    <div className="instruction-text">
                       Use discount code in checkout!
                     </div>
                   </div>
@@ -134,27 +148,33 @@ const BestSeller = () => {
 
                                 <Slider {...productcardimg} className="product-slider">
                <img
-                src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dw686f0f3a/A-AW25/embroidery-sept18.jpg"
+                src={banner1}
                 alt="Banner"
                 className="img-fluid rounded-imgages rounded mt-4"
               />
                <img
-                src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dw0d13e6a8/A-AW25/lehenga-sept18.jpg"
+                src={banner3}
                 alt="Banner"
                 className="img-fluid rounded-imgages rounded mt-4"
               />
                <img
-                src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dw56504a45/A-AW25/indigo-sept18.jpg"
+                src={banner4}
                 alt="Banner"
                 className="img-fluid rounded-imgages rounded mt-4"
               />
                <img
-                src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dwd41efb54/A-AW25/posh-sept18.jpg"
+                src={banner5}
                 alt="Banner"
                 className="img-fluid rounded-imgages rounded mt-4"
               />
                 <img
-                src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dwe6a14e4a/A-AW25/silk-sept18.jpg"
+                src={banner6}
+
+                alt="Banner"
+                className="img-fluid rounded-imgages rounded mt-4"
+              />
+                <img
+                src={banner1}
                 alt="Banner"
                 className="img-fluid rounded-imgages rounded mt-4"
               />
@@ -175,8 +195,8 @@ const BestSeller = () => {
         </div>
       </section>
 
-      <section className="mb-0">
-        <img src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dw12071d92/A-AW25/wedding-oct4.jpg" alt="Banner"
+      <section className="mb-0 d-flex justify-content-center align-items-center">
+        <img src={banner5} alt="Banner"
         className="img-fluid "/>
       </section>
     </>

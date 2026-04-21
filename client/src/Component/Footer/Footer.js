@@ -12,6 +12,7 @@ import { GiClothes } from "react-icons/gi";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiDiscountPercentLine } from "react-icons/ri";
 import { IoPricetagsSharp } from "react-icons/io5";
+import './footer.css';
 
 
 const Footer = () => {
@@ -20,35 +21,35 @@ const Footer = () => {
 
 <>
    
-    <section class="feature-bar">
-        <div class="container">
-            <div class="row g-4"> 
+    <section className="feature-bar">
+        <div className="container">
+            <div className="row g-4"> 
                 
-                <div class="col-12 col-md-6 col-lg-3 feature-col">
-                    <div class="feature-item">
-                        <GiClothes class="feature-icon" />
-                        <span class="feature-text">Latest trend products</span>
+                <div className="col-12 col-md-6 col-lg-3 feature-col">
+                    <div className="feature-item">
+                        <GiClothes className="feature-icon" />
+                        <span className="feature-text">Latest trend products</span>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-3 feature-col">
-                    <div class="feature-item">
-                       <TbTruckDelivery class="feature-icon" />
-                        <span class="feature-text">Free delivery for order </span>
+                <div className="col-12 col-md-6 col-lg-3 feature-col">
+                    <div className="feature-item">
+                       <TbTruckDelivery className="feature-icon" />
+                        <span className="feature-text">Free delivery for order </span>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-3 feature-col">
-                    <div class="feature-item">
-                        <RiDiscountPercentLine class="feature-icon" />
-                        <span class="feature-text">Daily Mega Discounts</span>
+                <div className="col-12 col-md-6 col-lg-3 feature-col">
+                    <div className="feature-item">
+                        <RiDiscountPercentLine className="feature-icon" />
+                        <span className="feature-text">Daily Mega Discounts</span>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-3 feature-col">
-                    <div class="feature-item">
-                        <IoPricetagsSharp class="feature-icon" />
-                        <span class="feature-text">Best price on the market</span>
+                <div className="col-12 col-md-6 col-lg-3 feature-col">
+                    <div className="feature-item">
+                        <IoPricetagsSharp className="feature-icon" />
+                        <span className="feature-text">Best price on the market</span>
                     </div>
                 </div>
 
@@ -77,16 +78,16 @@ const Footer = () => {
             </p>
             {/* Social Icons */}
             <div className="footer-social-icon">
-              <a href="#">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer">
                 <FaInstagram />
               </a>
-              <a href="#">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer">
                 <FaFacebook />
               </a>
-              <a href="#">
+              <a href="https://youtube.com" target="_blank" rel="noreferrer">
                 <IoLogoYoutube />
               </a>
-              <a href="#">
+              <a href="https://x.com" target="_blank" rel="noreferrer">
                 <FaXTwitter />
               </a>
             </div>
@@ -97,11 +98,11 @@ const Footer = () => {
               <h3>Useful Links</h3>
             </div>
             <ul className="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/">About Us</a></li>
+              <li><a href="/">Services</a></li>
+              <li><a href="/">Portfolio</a></li>
+              <li><a href="/">Contact</a></li>
             </ul>
           </div>
 
@@ -110,11 +111,11 @@ const Footer = () => {
               <h3>Categories</h3>
             </div>
             <ul className="footer-links">
-              <li><a href="#">Men's Denim</a></li>
-              <li><a href="#">Women's Handbags</a></li>
-              <li><a href="#">Ethnic Wear</a></li>
-              <li><a href="#">Beauty</a></li>
-              <li><a href="#">Kids Wear</a></li>
+              <li><a href="/">Men's Denim</a></li>
+              <li><a href="/">Women's Handbags</a></li>
+              <li><a href="/">Ethnic Wear</a></li>
+              <li><a href="/">Beauty</a></li>
+              <li><a href="/">Kids Wear</a></li>
             </ul>
           </div>
 
@@ -159,13 +160,13 @@ const Footer = () => {
               <div className="footer-menu text-right ">
                 {/* Placeholders for Payment Methods */}
                 <span style={{color:'#fff', fontSize:'12px', marginRight:'10px'}}>We accept:</span>
-                <a style={{color:'#fff', margin:'0 5px'}}>
+                <a href="/" style={{color:'#fff', margin:'0 5px'}}>
                     <FaCcVisa size={32} />
                 </a>
-                <a style={{color:'#fff', margin:'0 5px'}}>
+                <a href="/" style={{color:'#fff', margin:'0 5px'}}>
                     <FaCcMastercard size={32} />
                 </a>
-                <a style={{color:'#fff', margin:'0 5px'}}>
+                <a href="/" style={{color:'#fff', margin:'0 5px'}}>
                     <FaCcAmazonPay size={32} />
                 </a>
               </div>

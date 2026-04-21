@@ -6,6 +6,7 @@ import { IoSearch } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import Slide from "@mui/material/Slide";
 import { MyContext } from "../../App";
+import './country.css';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -27,7 +28,7 @@ const CountryDrodown = () => {
 
   useEffect(() => {
     setCountryList(context.countryList);
-  }, []);
+  }, [context.countryList]);
 
   const filterList = (e) => {
     const keyword = e.target.value.toLowerCase();

@@ -3,6 +3,7 @@ import { MyContext } from '../../App';
 import img_logo from '../../assets/images/logo.png';
 import gg from '../../assets/images/gg.png';
 import { IoIosArrowRoundBack } from "react-icons/io";
+import '../auth.css';
 
 
 // MUI Components for inner elements
@@ -158,7 +159,7 @@ const SignIn = () => {
                   Sign Up
                 </Link>
               </small>
-              <span><img className='google-logo' src={gg}/>
+              <span><img className='google-logo' src={gg} alt="Google sign in"/>
               
               </span>
             </div>

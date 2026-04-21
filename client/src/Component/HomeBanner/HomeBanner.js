@@ -1,6 +1,12 @@
 import React from 'react'
 import Slider from "react-slick";
+import './homebanner.css';
+import banner1 from '../../assets/banner/banner1.jpg'
+import banner2 from '../../assets/banner/banner2.jpg'
+import banner3 from '../../assets/banner/banner3.jpg'
+import banner4 from '../../assets/banner/banner4.jpg'
 
+import './homebanner.css'
 
 const HomeBanner = () => {
   var bannerslider = {
@@ -21,14 +27,17 @@ const HomeBanner = () => {
         <div className='col-lg-12'>
                <Slider {...bannerslider} >
                 <div className='item'>
-                    <img src='https://cmsimages.shoppersstop.com/Bank_to_Bag_Sale_Caroosuel_SS_1_962926f922/Bank_to_Bag_Sale_Caroosuel_SS_1_962926f922.jpg' alt='Banner1' className='img-fluid w-100 rounded'/>
+                    <img src={banner1} alt='Banner1' className='img-fluid w-100 rounded home-banner'/>
                 </div>
 
                  <div className='item'>
-                    <img src='https://cmsimages.shoppersstop.com/PB_fest_main_kv_web_ce4cbdf46e/PB_fest_main_kv_web_ce4cbdf46e.png' alt='Banner1' className='img-fluid w-100 rounded'/>
+                    <img src={banner2} alt='Banner2' className='img-fluid w-100 rounded home-banner'/>
                 </div>
                  <div className='item'>
-                    <img src='https://cmsimages.shoppersstop.com/Main_KV_web_742464bae8/Main_KV_web_742464bae8.png' alt='Banner1' className='img-fluid w-100 rounded'/>
+                    <img src={banner3} alt='Banner3' className='img-fluid w-100 rounded home-banner'/>
+                </div>
+                <div className='item'>
+                    <img src={banner4} alt='Banner4' className='img-fluid w-100 rounded home-banner'/>
                 </div>
                 </Slider> 
       </div>

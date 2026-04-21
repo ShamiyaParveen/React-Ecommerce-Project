@@ -1,124 +1,205 @@
-# 🛍️ Ecommerce React App
+# Zoobiya E-Commerce Frontend
 
-A modern and responsive **React-based eCommerce frontend** built with **React Router**, **Bootstrap 4**, **Material UI**, and **React Icons**.  
-This project is part of a full-stack MERN eCommerce application and is optimized for clean code, scalability, and UI consistency.
+A responsive e-commerce frontend built with React. This project focuses on clean UI, reusable components, API integration, category-based product browsing, search, product details, and cart management using `localStorage`.
 
----
+This project is useful for:
+- portfolio showcase
+- resume project links
+- frontend developer interviews
 
-## 🚀 Features
+## Live Demo
 
-- ⚛️ Built with **React (Create React App)**
-- 🛣️ **React Router DOM** for navigation
-- 🎨 **Material UI** components
-- 💠 **Bootstrap 4.1.3** for responsive layout
-- 🔣 **React Icons** for modern UI
-- 🎯 Clean and scalable folder structure
-- 🔌 Backend-API ready (Node.js / Express)
-- 📱 Fully responsive design
+Add your deployed link here:
 
----
+`https://your-live-link.com`
 
-## 📦 Tech Stack
+## GitHub Repository
 
-**Frontend**
-- React.js  
-- React Router DOM  
-- Material UI  
-- Styled Components  
-- Bootstrap 4.1.3  
-- React Icons  
+Add your repository link here:
 
-**Development Tools**
-- Create React App  
-- Webpack/Babel (CRA internal)  
-- ESLint (default configuration)
+`https://github.com/your-username/your-repo-name`
 
----
+## Features
 
-## 📁 Folder Structure
+- Product data fetched from a public API
+- Dynamic category generation from API data
+- Search by product title, category, and brand
+- Category-based listing page
+- Product details page using dynamic routing
+- Add to cart / go to cart behavior
+- Cart quantity update and item removal
+- Cart persistence using `localStorage`
+- Quick view product modal
+- Responsive layout for mobile, tablet, and desktop
+- Component-based CSS structure for maintainability
 
-```
-ecommerce-react-app/
-│── public/
-│── src/
-│   ├── components/
-│   ├── pages/
+## Tech Stack
+
+- React
+- React Router DOM
+- Context API
+- Axios
+- Material UI
+- Bootstrap
+- React Icons
+- React Slick
+- CSS
+
+## How It Works
+
+### 1. Product Fetching
+
+The app fetches products from:
+
+`https://dummyjson.com/products?limit=100`
+
+The API call is handled in `App.js`, and the product data is stored in shared state using Context API.
+
+### 2. Shared State Management
+
+`App.js` acts as the central data layer of the app. It manages:
+
+- products
+- search term
+- category data
+- selected product for modal
+- cart items
+- cart totals
+
+This shared state is passed through `MyContext`.
+
+### 3. Search and Category Filtering
+
+The search value is stored globally. On the listing page:
+
+1. products are filtered by category from the route
+2. search is applied on the filtered result
+3. visible product count is controlled by the listing UI
+
+### 4. Product Details
+
+The product details page uses `useParams()` to read the product id from the URL and finds the matching product from the shared products array.
+
+### 5. Cart Logic
+
+When a product is added:
+
+- if the product already exists in cart, quantity is updated
+- if not, it is added as a new cart item
+
+Cart data is saved in `localStorage`, so it remains after refresh.
+
+## Folder Structure
+
+```bash
+client/
+├── public/
+├── src/
 │   ├── assets/
-│   ├── hooks/
+│   ├── Component/
+│   ├── Pages/
 │   ├── App.js
-│   ├── index.js
-│── package.json
-│── README.md
+│   ├── App.css
+│   └── index.js
+├── package.json
+└── README.md
 ```
 
----
+## Key Pages
 
-## 🛠️ Installation & Setup
+### Home Page
 
-### 1. Clone the repository
+- Hero banner
+- Category section
+- Featured products
+- Best sellers
+- Promotional sections
+
+### Listing Page
+
+- Category-based product listing
+- Search filtering
+- Grid view options
+- Product count control
+
+### Product Details Page
+
+- Product gallery
+- Product info
+- Quantity selector
+- Add to cart / buy now
+- Related products
+
+### Cart Page
+
+- Added products
+- Quantity update
+- Remove item
+- Clear cart
+- Subtotal and total calculation
+
+## Styling Approach
+
+The project uses:
+
+- shared/global styles in `App.css`
+- separate CSS files for related components and pages
+
+This makes the code easier to read, maintain, and explain in interviews.
+
+## Why This Project Is Good For Frontend Interviews
+
+This project demonstrates:
+
+- API integration
+- React component architecture
+- state management using Context API
+- dynamic routing
+- reusable UI components
+- cart logic
+- responsive design
+- code organization
+
+## Installation
+
 ```bash
-git clone https://github.com/ShamiyaParveen/ecommerce-react-app.git
-cd ecommerce-react-app
-```
-
-### 2. Install dependencies
-```bash
+cd client
 npm install
 ```
 
-### 3. Install UI libraries
-```bash
-npm install react-router-dom
-npm install react-icons --save
-npm install bootstrap@4.1.3
-npm install @mui/material @mui/styled-engine-sc styled-components
-npm install @mui/icons-material
-```
+## Run Locally
 
-### 4. Start development server
 ```bash
 npm start
 ```
 
-Open: http://localhost:3000
+Open:
 
----
+`http://localhost:3000`
 
-## 🏗️ Build for Production
+## Build For Production
 
 ```bash
 npm run build
 ```
 
----
+## Resume Description
 
-## 🔧 Available Scripts
+Built a responsive e-commerce frontend using React, Context API, React Router, and public REST APIs. Implemented product listing, search, dynamic routing, product details, and cart management with `localStorage` persistence.
 
-| Command | Description |
-|--------|-------------|
-| npm start | Run the development server |
-| npm run build | Create a production build |
-| npm test | Run tests |
-| npm run eject | Unlock CRA configuration |
+## Future Improvements
 
----
+- Backend-based cart and authentication
+- Real checkout flow
+- Sorting functionality with actual logic
+- Price and brand filters connected to final product results
+- Wishlist functionality
 
-## 📚 Useful Resources
+## Author
 
-- React Docs → https://reactjs.org  
-- React Router → https://reactrouter.com  
-- Material UI → https://mui.com  
-- Bootstrap → https://getbootstrap.com  
+Your Name
 
----
+## License
 
-## 🤝 Contributing
-
-Pull requests and suggestions are welcome!
-
----
-
-## 📝 License
-
-Specify your license here.
+This project is for learning, portfolio, and interview purposes.
 

@@ -1,32 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { Link } from "react-router-dom";
-
-const categories = [
-  "Men Clothing",
-  "Women Clothing",
-  "Kids Wear",
-  "Footwear",
-  "Beauty & Makeup",
-  "Watches",
-  "Bags & Wallets",
-  "Jewellery",
-  "Accessories",
-];
-
-const brands = [
- "Nike" ,
-   "Adidas" ,
-   "Puma", 
-   "Levi's", 
-   "H&M",
-   "Zara", 
-   "Fossil",
-   "Titan", 
-];
+import { MyContext } from "../../App";
+import './sidebar.css';
 
 const Sidebar = () => {
+  const context = useContext(MyContext);
   const [priceRange, setPriceRange] = useState([100, 60000]);
 
   return (
@@ -38,11 +18,11 @@ const Sidebar = () => {
           <h6 className="filter-title">PRODUCT CATEGORIES</h6>
 
           <div className="filter-scroll">
-            {categories.map((cat, index) => (
-              <label key={index} className="filter-item">
-                <input type="checkbox" />
-                <span>{cat}</span>
-              </label>
+            {context.categoryData.map((category) => (
+              <Link key={category.slug} to={`/cat/${category.slug}`} className="filter-item category-filter-link">
+                <span>{category.label}</span>
+                <span>{category.count}</span>
+              </Link>
             ))}
           </div>
         </div>
@@ -88,8 +68,8 @@ const Sidebar = () => {
           <h6 className="filter-title">BRANDS</h6>
 
           <div className="filter-scroll">
-            {brands.map((brand, index) => (
-              <label key={index} className="filter-item brand-item">
+            {context.brandOptions.map((brand) => (
+              <label key={brand} className="filter-item brand-item">
                 <div className="brand-left">
                   <input type="checkbox" />
                   <span>{brand}</span>
@@ -102,7 +82,7 @@ const Sidebar = () => {
 
               <br />
         
-          <Link to="#">
+          <Link to="/cat/all">
           <img src="https://www.biba.in/dw/image/v2/BKQK_PRD/on/demandware.static/-/Library-Sites-BibaSharedLibrary/en_IN/dwfc3a2084/A-A-EOSS/DOW/EOSS-1.jpg" alt="Advertisement" className="img-fluid w-100 mt-4"/>
           </Link>
         

@@ -6,15 +6,20 @@ import { MyContext } from "../../App";
 import ProductImage from "../ProductImage/ProductImage";
 import ProductQuantity from "../ProductQuantity/ProductQuantity";
 import { IoMdCheckmark } from "react-icons/io";
-import ProductDetails from "../ProductDetailsSingle/ProductDetailsSingle";
 import ProductDetailsSingle from "../ProductDetailsSingle/ProductDetailsSingle";
 import AddCartButton from "../AddCartButton/AddCartButton";
+import './product-modal.css';
 
 
-const ProductModal = (props) => {
+const ProductModal = () => {
   
 
     const context = useContext(MyContext);
+    const [quantity, setQuantity] = useState(1);
+
+    if (!context.selectedProduct) {
+      return null;
+    }
 
   
  
@@ -34,15 +39,15 @@ const ProductModal = (props) => {
 
         <div className="product-content">
           {/* --- LEFT COLUMN: IMAGES --- */}
-          <ProductImage />
+          <ProductImage product={context.selectedProduct} />
 
           {/* --- RIGHT COLUMN: DETAILS --- */}
 
              <div className="product-details-modal">
 
-              <ProductDetailsSingle />
-              <ProductQuantity />
-              <AddCartButton />
+              <ProductDetailsSingle product={context.selectedProduct} />
+              <ProductQuantity value={quantity} onChange={setQuantity} />
+              <AddCartButton product={context.selectedProduct} quantity={quantity} />
  
             <hr className="divider" style={{marginTop:'70px'}} />
 
@@ -62,10 +67,10 @@ const ProductModal = (props) => {
 
             <div className="footer-tags">
               <p>
-                Category: <span>Meats & Seafood</span>
+                Category: <span>{context.selectedProduct.category}</span>
               </p>
               <p>
-                Tags: <span>chicken, natural, organic, healthy</span>
+                Tags: <span>{context.selectedProduct.tags?.join(", ") || context.selectedProduct.category}</span>
               </p>
             </div>
           </div>
